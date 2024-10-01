@@ -1,5 +1,5 @@
 const {Autos} = require('../models')
-const cliente = require('../models/cliente')
+
 
 exports.visualizar = async(req, res)=>{
     try{
@@ -7,7 +7,7 @@ exports.visualizar = async(req, res)=>{
         res.json({consulta})
     }
     catch(e){
-        console.json({mjs:"Error desde el médoto visualizar en el controlador de autos"})
+        res.json({mjs:"Error desde el médoto visualizar en el controlador de autos"+ e})
     }
 }
 
@@ -25,14 +25,13 @@ exports.agregar = async(req,res)=>{
 }
 
 exports.disponible = async(req, res)=>{
-    const consulta = await Autos.findAll({
-        were:{
-            estado:"disponible"
-        }
-    })
-    
     try{
-        if (consulta){
+        const consulta = await Autos.findAll({
+            where:{
+                estado:"disponible"
+            }
+        })
+        if (consulta.length > 0){
             res.json({consulta})
         }
         else{

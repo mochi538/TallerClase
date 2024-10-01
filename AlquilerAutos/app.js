@@ -5,10 +5,10 @@ require('dotenv').config()
 const clienteRoute = require('./routes/clientesRoute')
 const autoRoute = require('./routes/autosRuote')
 const alquilerRoute = require('./routes/alquilerRoute')
-/* Ruta de alquiler */
 
 
-const port = process.env.PORT
+
+const port = process.env.PORT || 4004
 
 app.use(express.json())
 app.use('/api', clienteRoute, autoRoute,alquilerRoute)

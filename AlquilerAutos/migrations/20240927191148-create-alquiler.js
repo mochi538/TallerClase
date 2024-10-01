@@ -19,7 +19,7 @@ module.exports = {
       idAuto: {
         type: Sequelize.INTEGER,
         references:{
-          model:'Clientes',
+          model:'Autos',
           key: 'id'
         }
       },
